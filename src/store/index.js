@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-import moduleEx from './moduleEx'
+import moduleUser from './moduleUser';
+import modulePost from './modulePost';
 
 Vue.use(Vuex)
 
@@ -11,7 +12,7 @@ const store = new Vuex.Store({
 
   },
   modules: {
-    moduleEx
+    moduleUser, modulePost
   }
 })
 
