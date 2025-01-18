@@ -12,20 +12,24 @@
 <script>
 import CompPostList from '../../components/CompPostList.vue'
 import CompSidebar from '../../components/CompSidebar.vue'
+import { mapActions } from 'vuex'
+
 export default {
   components: { CompPostList, CompSidebar },
   name: 'home-page',
   data() {
-    return {
-
-    }
+    return {}
+  },
+  created() {
+    this.getListPostHasPaging({ pagesize: 10, currPage: 1 });
   },
   methods: {
-
-  }
+    ...mapActions({
+            'getListPostHasPaging': 'post/getListPostHasPaging'
+    })
+  },
 }
 </script>
 
 <style>
-
 </style>
