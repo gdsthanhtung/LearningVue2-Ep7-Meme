@@ -22,7 +22,7 @@ export default {
   },
   created() {
     let categoryId = this.$route.query.categoryId || null;
-    this.getListPost({ pagesize: 10, currPage: 1, categoryId });
+    this.getListPost({ pagesize: 100, currPage: 1, categoryId });
   },
   methods: {
     ...mapActions({
@@ -31,7 +31,7 @@ export default {
   },
   watch: {
     '$route.query.categoryId': function (newVal, oldVal) {
-      this.getListPost({ pagesize: 10, currPage: 1, categoryId: newVal });
+      this.getListPost({ pagesize: 100, currPage: 1, categoryId: newVal });
     }
   }
 }

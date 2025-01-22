@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <comp-loading v-bind:class="{ show: isLoading }" />
     <comp-header v-if="isRenderHeader" />
     <main>
       <div class="container">
@@ -13,8 +14,10 @@
 <script>
 import CompFooter from './components/CompFooter.vue'
 import CompHeader from './components/CompHeader.vue'
+import CompLoading from './components/CompLoading.vue'
+import { mapState } from 'vuex';
 export default {
-  components: { CompHeader, CompFooter },
+  components: { CompHeader, CompFooter, CompLoading },
   name: 'app',
   data () {
     return {
@@ -22,6 +25,8 @@ export default {
     }
   },
   computed: {
+    ...mapState(['isLoading']),
+
     isRenderHeader() {
       let noRender = ['user-login-page', 'user-register-page']
       return (noRender.indexOf(this.$route.name) !== -1) ? false : true;
