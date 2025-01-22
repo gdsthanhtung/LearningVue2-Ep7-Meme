@@ -4,82 +4,9 @@
       <div class="ass1-header">
         <div class="container">
           <router-link to="/" class="ass1-logo">Gds Meme</router-link>
-          <nav>
-            <ul class="ass1-header__menu">
-              <li>
-                <a href="#">Danh mục</a>
-                <div class="ass1-header__nav" style="display: none;">
-                  <div class="container">
-                    <ul>
-                      <li><a href="index.html">Funny</a></li>
-                      <li><a href="index.html">Animals</a></li>
-                      <li><a href="index.html">Anime & Mâng</a></li>
-                      <li><a href="index.html">Awesome</a></li>
-                      <li><a href="index.html">Basketball</a></li>
-                    </ul>
-                    <ul>
-                      <li><a href="index.html">Car</a></li>
-                      <li><a href="index.html">Comic</a></li>
-                      <li><a href="index.html">Cosplay</a></li>
-                      <li><a href="index.html">Countryballs</a></li>
-                      <li><a href="index.html">Classical Art Memes</a></li>
-                    </ul>
-                    <ul>
-                      <li><a href="index.html">Girl</a></li>
-                      <li><a href="index.html">History</a></li>
-                      <li><a href="index.html">K-POP</a></li>
-                      <li><a href="index.html">V-POP</a></li>
-                      <li><a href="index.html">Pokémon</a></li>
-                    </ul>
-                    <ul>
-                      <li><a href="index.html">School</a></li>
-                      <li><a href="index.html">Star war</a></li>
-                      <li><a href="index.html">Coder</a></li>
-                      <li><a href="index.html">Travel</a></li>
-                      <li><a href="index.html">Sport</a></li>
-                    </ul>
-                  </div>
-                  <div class="ass1-header__menu-transition"></div>
-                </div>
-              </li>
-              <li class="active">
-                <a href="index.html">Hot</a>
-                <div class="ass1-header__nav" style="display: none;">
-                  <div class="container">
-                    <ul>
-                      <li><a href="index.html">Funny</a></li>
-                      <li><a href="index.html">Animals</a></li>
-                      <li><a href="index.html">Anime & Mâng</a></li>
-                      <li><a href="index.html">Awesome</a></li>
-                      <li><a href="index.html">Basketball</a></li>
-                    </ul>
-                    <ul>
-                      <li><a href="index.html">Car</a></li>
-                      <li><a href="index.html">Comic</a></li>
-                      <li><a href="index.html">Cosplay</a></li>
-                      <li><a href="index.html">Countryballs</a></li>
-                      <li><a href="index.html">Classical Art Memes</a></li>
-                    </ul>
-                    <ul>
-                      <li><a href="index.html">Girl</a></li>
-                      <li><a href="index.html">History</a></li>
-                      <li><a href="index.html">K-POP</a></li>
-                      <li><a href="index.html">V-POP</a></li>
-                      <li><a href="index.html">Pokémon</a></li>
-                    </ul>
-                    <ul>
-                      <li><a href="index.html">School</a></li>
-                      <li><a href="index.html">Star war</a></li>
-                      <li><a href="index.html">Coder</a></li>
-                      <li><a href="index.html">Travel</a></li>
-                      <li><a href="index.html">Sport</a></li>
-                    </ul>
-                  </div>
-                  <div class="ass1-header__menu-transition"></div>
-                </div>
-              </li>
-            </ul>
-          </nav>
+
+          <comp-header-nav />
+
           <div class="ass1-header__search">
             <form action="#">
               <label>
@@ -99,7 +26,9 @@
 
 <script>
 import $ from 'jquery';
+import CompHeaderNav from './CompHeaderNav.vue';
 export default {
+  components: { CompHeaderNav },
   name: 'comp-header',
   data() {
     return {
@@ -115,6 +44,10 @@ export default {
     }, function() {
       $(this).find('.ass1-header__nav').stop().slideUp(300);
     });
+
+    $(".ass1-header__nav ul li > a").click(function(e) {
+			$(this).parents('.ass1-header__nav').slideUp(300, 'swing')
+		})
   }
 }
 </script>

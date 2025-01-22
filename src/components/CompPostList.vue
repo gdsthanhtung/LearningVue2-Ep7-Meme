@@ -1,8 +1,12 @@
 <template>
   <div id="post-list">
-    <div class="ass1-section__list">
-      <comp-post-item v-for="post in listPost" :key="post.id" :post="post" />
+    <div v-if="listPost && listPost.length">
+      <div class="ass1-section__list">
+        <comp-post-item v-for="post in listPost" :key="post.id" :post="post" />
+      </div>
+      <button class="load-more ass1-btn"><span>Xem thêm</span></button>
     </div>
+    <h3 v-else>Danh sách rỗng</h3>
   </div>
 </template>
 

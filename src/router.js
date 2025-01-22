@@ -20,7 +20,7 @@ let isLogin = false;
 
 const routes = [
   {
-    path: '/',
+    path: '/:categoryId?',
     name: 'home-page',
     component: CommonHomePage
   },

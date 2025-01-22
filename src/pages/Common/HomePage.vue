@@ -18,16 +18,22 @@ export default {
   components: { CompPostList, CompSidebar },
   name: 'home-page',
   data() {
-    return {}
+    return { }
   },
   created() {
-    this.getListPostHasPaging({ pagesize: 10, currPage: 1 });
+    let categoryId = this.$route.query.categoryId || null;
+    this.getListPost({ pagesize: 10, currPage: 1, categoryId });
   },
   methods: {
     ...mapActions({
-            'getListPostHasPaging': 'post/getListPostHasPaging'
+            'getListPost': 'post/getListPost'
     })
   },
+  watch: {
+    '$route.query.categoryId': function (newVal, oldVal) {
+      this.getListPost({ pagesize: 10, currPage: 1, categoryId: newVal });
+    }
+  }
 }
 </script>
 
