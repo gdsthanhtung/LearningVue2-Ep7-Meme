@@ -203,7 +203,7 @@ export default {
   name: 'post-detail-page',
   data() {
     return {
-
+      postId: this.$route.params.id
     }
   },
   methods: {

@@ -17,7 +17,11 @@ export default {
       let rs = response.data;
       if (rs.status === 200) {
         let checkedList = rs.posts.filter(post => post.PID !== null);
-        commit('SET_LIST_POST', checkedList);
+        if(currPage == 1) {
+          commit('SET_LIST_POST', checkedList);
+        }else{
+          commit('PUSH_LIST_POST', checkedList);
+        }
       } else {
         console.log('error', rs.message);
       }

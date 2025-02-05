@@ -13,6 +13,7 @@
 import CompPostList from '../../components/CompPostList.vue'
 import CompSidebar from '../../components/CompSidebar.vue'
 import { mapActions } from 'vuex'
+import { PAGE_SIZE, CURRENT_PAGE } from '../../constants'
 
 export default {
   components: { CompPostList, CompSidebar },
@@ -22,17 +23,12 @@ export default {
   },
   created() {
     let categoryId = this.$route.query.categoryId || null;
-    this.getListPost({ pagesize: 100, currPage: 1, categoryId });
+    this.getListPost({ pagesize: PAGE_SIZE, currPage: CURRENT_PAGE, categoryId });
   },
   methods: {
     ...mapActions({
-            'getListPost': 'post/getListPost'
+      'getListPost': 'post/getListPost'
     })
-  },
-  watch: {
-    '$route.query.categoryId': function (newVal, oldVal) {
-      this.getListPost({ pagesize: 100, currPage: 1, categoryId: newVal });
-    }
   }
 }
 </script>
