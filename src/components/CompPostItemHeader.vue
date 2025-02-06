@@ -4,7 +4,7 @@
       <img :src="getAvatar" alt="">
     </router-link>
     <div>
-      <router-link :to="getUserPageLink" class="ass1-section__name">{{ post.fullname }}</router-link>
+      <router-link :to="getUserPageLink" class="ass1-section__name">{{ getFullname }}</router-link>
       <span class="ass1-section__passed">{{ postedTime }}</span>
     </div>
   </div>
@@ -25,7 +25,10 @@ export default {
       return formatTimeFromNow(this.post.time_added);
     },
     getAvatar() {
-        return (this.post.profilepicture) || '/dist/images/default-avatar.png';
+      return (this.post.profilepicture) || '/dist/images/default-avatar.png';
+    },
+    getFullname() {
+      return (this.post.fullname) || '#no-name';
     },
     getUserPageLink() {
       return { name: 'user-page', params: { id: this.post.USERID } };

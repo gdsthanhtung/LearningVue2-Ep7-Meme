@@ -1,7 +1,7 @@
 <template>
   <div class="ass1-section__content">
     <p>{{ post.post_content }}</p>
-    <i class="ass1-section__passed">Category: {{ post.tag_value }}</i>
+
     <div class="ass1-section__image">
         <router-link :to="getPostLink"><img :src="post.url_image" alt=""></router-link>
     </div>

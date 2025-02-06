@@ -11,7 +11,7 @@
         <div class="ass1-section__head">
           <a href="#" class="ass1-section__avatar ass1-avatar"><img src="/dist/images/avatar-03.png" alt=""></a>
           <div>
-            <a href="#" class="ass1-section__name">Trần Văn A</a>
+            <a href="#" class="ass1-section__name">Gds Thanh Tung</a>
             <span class="ass1-section__passed">20 phút trước</span>
           </div>
           <!-- <a href="#" class="ass1-section__link ass1-btn-icon"><i class="icon-Link"></i></a> -->

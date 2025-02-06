@@ -1,3 +1,4 @@
+import { get } from "jquery";
 import axiosInstance from "../../plugins/axios";
 
 export default {
@@ -22,6 +23,22 @@ export default {
         }else{
           commit('PUSH_LIST_POST', checkedList);
         }
+      } else {
+        console.log('error', rs.message);
+      }
+      commit('SET_IS_LOADING', false, { root: true });
+    } catch (error) {
+      console.log("error", error);
+    }
+  },
+
+  async getPostById({ commit }, { postId }) {
+    commit('SET_IS_LOADING', true, { root: true });
+    try {
+      var response = await axiosInstance.get('post/post.php', { params: { postid: postId } });
+      let rs = response.data;
+      if (rs.status === 200) {
+        commit('SET_POST_DETAIL', rs.data);
       } else {
         console.log('error', rs.message);
       }

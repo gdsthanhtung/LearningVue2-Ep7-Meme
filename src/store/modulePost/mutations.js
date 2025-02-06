@@ -4,5 +4,8 @@ export default {
   },
   PUSH_LIST_POST(state, data) {
     state.listPost = [...state.listPost, ...data];
-  }
+  },
+  SET_POST_DETAIL(state, data) {
+    state.postDetail = data;
+  },
 }
