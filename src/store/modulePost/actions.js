@@ -1,4 +1,3 @@
-import { get } from "jquery";
 import axiosInstance from "../../plugins/axios";
 
 export default {
@@ -26,25 +25,29 @@ export default {
       } else {
         console.log('error', rs.message);
       }
-      commit('SET_IS_LOADING', false, { root: true });
     } catch (error) {
       console.log("error", error);
+    } finally {
+      commit('SET_IS_LOADING', false, { root: true });
     }
   },
 
-  async getPostById({ commit }, { postId }) {
+  async getPostById({ commit, dispatch }, { postId }) {
     commit('SET_IS_LOADING', true, { root: true });
     try {
       var response = await axiosInstance.get('post/post.php', { params: { postid: postId } });
       let rs = response.data;
       if (rs.status === 200) {
         commit('SET_POST_DETAIL', rs.data);
+        await dispatch('user/getUserById', { userId: rs.data.post.USERID }, { root: true });
       } else {
+        commit('SET_POST_DETAIL', null);
         console.log('error', rs.message);
       }
-      commit('SET_IS_LOADING', false, { root: true });
     } catch (error) {
       console.log("error", error);
+    } finally {
+      commit('SET_IS_LOADING', false, { root: true });
     }
   }
 }

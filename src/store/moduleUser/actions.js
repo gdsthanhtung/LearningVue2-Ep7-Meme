@@ -1,14 +1,18 @@
+import axiosInstance from "../../plugins/axios";
+
 export default {
-  // checkLogin({ commit }, data) {
-  //   if (data.email === 'admin@gmail.com' && data.password === 'admin') {
-  //     commit('SET_ISLOGGED', true);
-  //     return true;
-  //   }else{
-  //     commit('SET_ISLOGGED', false);
-  //     return false;
-  //   }
-  // },
-  // logout({ commit }) {
-  //   commit('SET_ISLOGGED', false);
-  // }
+  async getUserById({ commit }, { userId }) {
+    try {
+      var response = await axiosInstance.get('/member/member.php', { params: { userid: userId } });
+      let rs = response.data;
+      if (rs.status === 200) {
+        commit('SET_USER_INFO', rs.user);
+        return { status: true, data: rs.user };
+      } else {
+        return { status: false, message: rs.message };
+      }
+    } catch (error) {
+      return { status: false, message: error.message };
+    }
+  }
 }

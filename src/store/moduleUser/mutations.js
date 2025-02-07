@@ -1,7 +1,7 @@
-export default {
-  // SET_ISLOGGED(state, data) {
-  //   console.log('SET_ISLOGGED', data);
+import Vue from 'vue';
 
-  //   state.isLogged = data;
-  // }
+export default {
+  SET_USER_INFO(state, user) {
+    Vue.set(state.users, user.USERID, user);
+  }
 }
