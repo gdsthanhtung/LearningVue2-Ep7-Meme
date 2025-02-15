@@ -13,7 +13,7 @@ export default {
         params.tagIndex = categoryId;
       }
 
-      var response = await axiosInstance.get(endpoint, { params });
+      let response = await axiosInstance.get(endpoint, { params });
       let rs = response.data;
       if (rs.status === 200) {
         let checkedList = rs.posts.filter(post => post.PID !== null);
@@ -35,7 +35,7 @@ export default {
   async getPostById({ commit, dispatch }, { postId }) {
     commit('SET_IS_LOADING', true, { root: true });
     try {
-      var response = await axiosInstance.get('post/post.php', { params: { postid: postId } });
+      let response = await axiosInstance.get('post/post.php', { params: { postid: postId } });
       let rs = response.data;
       if (rs.status === 200) {
         commit('SET_POST_DETAIL', rs.data);
